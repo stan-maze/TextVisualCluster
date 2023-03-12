@@ -1,7 +1,7 @@
 # TextVisualCluster
 
 ## 库
-pyside2/pyside6
+pyside6
 wordcloud
 jieba
 pandas
