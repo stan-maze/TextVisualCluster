@@ -13,8 +13,8 @@ from os.path import isfile, join
 stopwords_filename = 'data/stopwords.txt'
 #字体文件目录
 font_filename = 'fonts/STFangSong.ttf'
-#词云图片输出目录
-template_dir = 'data/templates/'
+#前置目录
+prefix='../resource/'
 #词云背景颜色
 word_background_color='white'
 #字体最大大小
@@ -50,38 +50,39 @@ def word_counting(words):
     return words_stat
 
 #生成词云函数
-def create_wordscloud(input_filename):
+def create_wordscloud(input_filename1,background_picture_filename):
+    input_filename=join(prefix,input_filename1)
     words=cut(input_filename)
     words_stat=word_counting(words)
     print('# of different words =', len(words_stat))
-    input_prefix = input_filename
-    if input_filename.find('.') != -1:
-        input_prefix = '.'.join(input_filename.split('.')[:-1])
+    input_prefix = input_filename1
+    if input_filename1.find('.') != -1:
+        input_prefix = '.'.join(input_filename1.split('.')[:-1])
+    
 
-    for file in listdir(template_dir):
-        if file[-4:] != '.png' and file[-4:] != '.jpg':
-            continue
-        background_picture_filename = join(template_dir, file)
-        if isfile(background_picture_filename):
-            prefix = file.split('.')[0]
+    if background_picture_filename[-4:] != '.png' and background_picture_filename[-4:] != '.jpg':
+        print('# of different words =', len(words_stat))
+        return 0
+    background_picture_filename1 = join(prefix, background_picture_filename)
+    if isfile(background_picture_filename1):        
+        bimg = imageio.imread(background_picture_filename1)
+        wordcloud = WordCloud(font_path=font_filename, background_color=word_background_color,
+                                mask=bimg, max_font_size=word_size, random_state=100)
+        wordcloud = wordcloud.fit_words(
+            dict(words_stat.head(100).itertuples(index=False)))
 
-            bimg = imageio.imread(background_picture_filename)
-            wordcloud = WordCloud(font_path=font_filename, background_color=word_background_color,
-                                  mask=bimg, max_font_size=word_size, random_state=100)
-            wordcloud = wordcloud.fit_words(
-                dict(words_stat.head(100).itertuples(index=False)))
+        bimgColors = ImageColorGenerator(bimg)
+        wordcloud.recolor(color_func=bimgColors)
 
-            bimgColors = ImageColorGenerator(bimg)
-            wordcloud.recolor(color_func=bimgColors)
+        output_filename = prefix + '_' + input_prefix + '.png'
 
-            output_filename = prefix + '_' + input_prefix + '.png'
-
-            print('Saving', output_filename)
-            wordcloud.to_file(output_filename)
+        print('Saving', output_filename)
+        wordcloud.to_file(output_filename)
+        return output_filename
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 2:
-        create_wordscloud(sys.argv[1])
+    if len(sys.argv) == 3:
+        create_wordscloud(sys.argv[1],sys.argv[2])
     else:
         print('[usage] <input>')
