@@ -23,6 +23,7 @@ class WorkerThread(QThread):
         txt_path = json2text.convert_to_txt_file(self.json_path)
         print(txt_path, self.image_path)
         cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)
+        print('路径: ', txt_path, self.image_path, cloud_image_path, sep='\n')
         # bat_file_path = os.path.join(os.path.dirname(self.json_path), "generateWordCloud.bat")
         # subprocess.run([bat_file_path])
         self.generate_finished.emit(cloud_image_path)

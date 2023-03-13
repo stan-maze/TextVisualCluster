@@ -71,8 +71,9 @@ def create_wordscloud(input_filename,background_picture_filename):
         wordcloud.recolor(color_func=bimgColors)
 
         # output_filename = prefix + '_' + input_prefix + '.png'
-        output_filename = os.path.join(main_path,'resource',input_prefix+'_cloud.png')
-
+        filepath, _ = os.path.splitext(background_picture_filename)
+        # output_filename = os.path.join(main_path,'resource',input_prefix+'_cloud.png')
+        output_filename = filepath + '_cloud.png'
         print('Saving', output_filename)
         wordcloud.to_file(output_filename)
         return output_filename
