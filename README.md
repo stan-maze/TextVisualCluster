@@ -1,6 +1,7 @@
 # TextVisualCluster
 
 ## 库
+1. pip install -r requirement.txt
 1. pyside6
 1. wordcloud
 1. jieba
