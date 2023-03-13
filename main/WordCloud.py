@@ -1,7 +1,10 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QPlainTextEdit, QFileDialog, QMessageBox, QLabel, QDialog, QVBoxLayout, QTextEdit
 from PySide6.QtGui import QImage, QPixmap
 from PySide6.QtCore import QTimer, QThread, Signal
-
+from PySide6.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, 
+    QPlainTextEdit, QFileDialog, QMessageBox, 
+    QLabel, QDialog, QVBoxLayout, QTextEdit
+)
 import json
 import os
 from util.json2text import JsonToTxtConverter

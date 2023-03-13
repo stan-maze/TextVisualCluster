@@ -1,7 +1,13 @@
 import sys
 import pandas as pd
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QFileDialog, QTextEdit, QVBoxLayout, QHBoxLayout
+from PySide6.QtWidgets import (
+    QApplication, QMainWindow, QWidget, 
+    QPushButton, QFileDialog, QTextEdit, 
+    QVBoxLayout, QHBoxLayout
+)
+
+
 import WordCloud, Cluster
 
 import os

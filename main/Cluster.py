@@ -3,8 +3,9 @@ import json
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap, QBrush, QPen, QColor
 from PySide6.QtWidgets import (
-    QApplication, QMainWindow, QWidget, QLabel, QVBoxLayout,
-    QHBoxLayout, QTableWidget, QTableWidgetItem, QProgressBar, QDialog
+    QApplication, QMainWindow, QWidget, QLabel, 
+    QVBoxLayout, QHBoxLayout, QTableWidget, 
+    QTableWidgetItem, QProgressBar, QDialog
 )
 import matplotlib
 from matplotlib import pyplot as plt
