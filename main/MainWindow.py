@@ -2,9 +2,10 @@ import sys
 import pandas as pd
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QFileDialog, QTextEdit, QVBoxLayout, QHBoxLayout
-import word_cloud
+import WordCloud, Cluster
 
-
+import os
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -59,13 +60,18 @@ class MainWindow(QMainWindow):
 
     def generate_cluster(self):
         # 弹出新窗口，生成聚类
+        
+        self.setEnabled(False)
+        cluster = Cluster.Cluster()
+        cluster.exec()
+        self.setEnabled(True)
         pass
 
     def generate_wordcloud(self):
         # 弹出新窗口，生成词云
         self.setEnabled(False)
-        WordCloud = word_cloud.ImageJsonGenerator()
-        WordCloud.exec()
+        wordcloud = WordCloud.ImageJsonGenerator()
+        wordcloud.exec()
         self.setEnabled(True)
         # pass
 

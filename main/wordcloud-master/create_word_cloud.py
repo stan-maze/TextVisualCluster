@@ -82,7 +82,10 @@ def create_wordscloud(input_filename1,background_picture_filename):
 
 
 if __name__ == '__main__':
+    # print(sys.argv)
     if len(sys.argv) == 3:
         create_wordscloud(sys.argv[1],sys.argv[2])
+    # if len(sys.argv) == 2:
+    #     create_wordscloud(sys.argv[0],sys.argv[1])
     else:
         print('[usage] <input>')
