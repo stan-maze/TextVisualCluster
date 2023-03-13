@@ -6,8 +6,11 @@ import numpy as np
 from wordcloud import WordCloud
 import imageio
 from wordcloud import WordCloud, ImageColorGenerator
+import os
 from os import listdir
 from os.path import isfile, join
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+main_path = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir))
 
 #停止词文件目录
 stopwords_filename = 'data/stopwords.txt'
@@ -74,18 +77,29 @@ def create_wordscloud(input_filename1,background_picture_filename):
         bimgColors = ImageColorGenerator(bimg)
         wordcloud.recolor(color_func=bimgColors)
 
-        output_filename = prefix + '_' + input_prefix + '.png'
+        # output_filename = prefix + '_' + input_prefix + '.png'
+        output_filename = input_prefix + '_cloud.png'
 
         print('Saving', output_filename)
         wordcloud.to_file(output_filename)
         return output_filename
 
 
+
 if __name__ == '__main__':
+    # def test():
+    #     main_path = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir))
+    #     text_path = os.path.join(main_path, 'resource', 'test.txt')
+    #     pic_path = os.path.join(main_path, 'resource', 'love.png')
+    #     result_path = create_wordscloud(text_path, pic_path)
+    #     print(result_path)
+    # test()
+    pass
+    
     # print(sys.argv)
-    if len(sys.argv) == 3:
-        create_wordscloud(sys.argv[1],sys.argv[2])
-    # if len(sys.argv) == 2:
-    #     create_wordscloud(sys.argv[0],sys.argv[1])
-    else:
-        print('[usage] <input>')
+    # if len(sys.argv) == 3:
+    #     create_wordscloud(sys.argv[1],sys.argv[2])
+    # # if len(sys.argv) == 2:
+    # #     create_wordscloud(sys.argv[0],sys.argv[1])
+    # else:
+    #     print('[usage] <input>')

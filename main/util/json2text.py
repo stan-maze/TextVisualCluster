@@ -17,6 +17,7 @@ class JsonToTxtConverter:
                 for sentence in item['text']:
                     f.write(sentence + '\n')
         print(f'Successfully converted {self.json_file_path} to {self.txt_file_path}')
+        return self.txt_file_path
 
 # Example usage
 # converter = JsonToTxtConverter()

@@ -5,23 +5,27 @@ from PySide6.QtCore import QTimer, QThread, Signal
 import json
 import os
 from util.json2text import JsonToTxtConverter
-import subprocess
+import subprocess 
+from WordCloudMaster import create_word_cloud as CWC
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class WorkerThread(QThread):
     generate_finished = Signal(str)
 
-    def __init__(self, json_path):
+    def __init__(self, json_path, image_path):
         super().__init__()
         self.json_path = json_path
+        self.image_path = image_path
 
     def run(self):
         json2text = JsonToTxtConverter()
-        json2text.convert_to_txt_file(self.json_path)
-        bat_file_path = os.path.join(os.path.dirname(self.json_path), "generateWordCloud.bat")
-        subprocess.run([bat_file_path])
-        self.generate_finished.emit('生成完成')
+        txt_path = json2text.convert_to_txt_file(self.json_path)
+        print(txt_path, self.image_path)
+        cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)
+        # bat_file_path = os.path.join(os.path.dirname(self.json_path), "generateWordCloud.bat")
+        # subprocess.run([bat_file_path])
+        self.generate_finished.emit(cloud_image_path)
 
 class ImageJsonGenerator(QDialog):
     def __init__(self):
@@ -83,15 +87,20 @@ class ImageJsonGenerator(QDialog):
 
         self.is_generating = True
         self.btn_generate.setText('生成中...')
-        self.worker_thread = WorkerThread(self.json_path)
+        self.worker_thread = WorkerThread(self.json_path, self.image_path)
         self.worker_thread.generate_finished.connect(self.generateFinished)
         self.worker_thread.start()
 
-    def generateFinished(self, message):
+    def generateFinished(self, cloud_image_path):
         self.is_generating = False
         self.btn_generate.setText('生成')
         QMessageBox.about(self, '提示', '生成完成！')
-        self.showImage()
+        # 检查图片路径是否存在
+        if os.path.exists(cloud_image_path):
+            pixmap = QPixmap(cloud_image_path)
+            self.image_label.setPixmap(pixmap)
+        else:
+            self.image_label.setText('图片不存在！')
 
     def showImage(self):
         # 检查图片路径是否存在
