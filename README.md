@@ -6,6 +6,7 @@
 1. jieba
 1. pandas
 1. openpyxl
+1. pywin32
 
 
 ## 用法

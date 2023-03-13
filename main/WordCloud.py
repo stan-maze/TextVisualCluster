@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (
 import json
 import os
 from util.json2text import JsonToTxtConverter
+json2text = JsonToTxtConverter()
 import subprocess 
 from WordCloudMaster import create_word_cloud as CWC
 
@@ -22,7 +23,6 @@ class WorkerThread(QThread):
         self.image_path = image_path
 
     def run(self):
-        json2text = JsonToTxtConverter()
         txt_path = json2text.convert_to_txt_file(self.json_path)
         print(txt_path, self.image_path)
         cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)

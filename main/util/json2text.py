@@ -19,6 +19,5 @@ class JsonToTxtConverter:
         print(f'Successfully converted {self.json_file_path} to {self.txt_file_path}')
         return self.txt_file_path
 
-# Example usage
 # converter = JsonToTxtConverter()
 # converter.convert_to_txt_file('test.json')

@@ -10,6 +10,7 @@ from PySide6.QtWidgets import (
 import matplotlib
 from matplotlib import pyplot as plt
 from io import BytesIO
+
 import os
 # 否则matplotlib和qt的图像引擎冲突
 matplotlib.use('agg')
@@ -17,8 +18,9 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 class Cluster(QDialog):
-    def __init__(self):
+    def __init__(self, json_file_path):
         super().__init__()
+        self.json_file_path = json_file_path
 
         self.setWindowTitle("JSON可视化")
         
@@ -41,9 +43,11 @@ class Cluster(QDialog):
         
 
         # 读取JSON文件
-        with open(os.path.join(PROJECT_DIR, 'resource', 'test.json'), 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        # with open(os.path.join(PROJECT_DIR, 'resource', 'test.json'), 'r', encoding='utf-8') as f:
+        #     data = json.load(f)
 
+        with open(self.json_file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
         # 填充表格
         percentages = []
         themes = []

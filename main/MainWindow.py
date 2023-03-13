@@ -4,17 +4,25 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, 
     QPushButton, QFileDialog, QTextEdit, 
-    QVBoxLayout, QHBoxLayout
+    QVBoxLayout, QHBoxLayout, QMessageBox
 )
 
 
 import WordCloud, Cluster
+from util.xlsx2text import XlsxToTxtConverter
+xlsxconv = XlsxToTxtConverter()
+from util.cluster import ClusterTool
+clustertool = ClusterTool()
 
 import os
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        
+        self.xlsx_file_path = None
+        self.txt_file_path = None
+        self.json_file_path = None
 
         self.setWindowTitle("预习帮手")
 
@@ -52,11 +60,15 @@ class MainWindow(QMainWindow):
         file_name, _ = QFileDialog.getOpenFileName(self, "选择文件", "", "Excel Files (*.xls *.xlsx)", options=options)
 
         if file_name:
+            self.xlsx_file_path = file_name
             # 读取 Excel 文件内容
             df = pd.read_excel(file_name, engine='openpyxl')
             # 将 DataFrame 转换为字符串，并显示在文本框中
             text = df.to_string(index=True, justify='left')
             self.text_edit.setPlainText(text)
+            
+            # 转换txt保存
+            self.txt_file_path = xlsxconv.convert_to_txt_file(file_name)
 
             # 启用生成聚类和词云的按钮
             self.btn_cluster.setDisabled(False)
@@ -68,10 +80,20 @@ class MainWindow(QMainWindow):
         # 弹出新窗口，生成聚类
         
         self.setEnabled(False)
-        cluster = Cluster.Cluster()
+        # 执行聚类保存到相应json
+        self.json_file_path = clustertool.excuteCluster(self.txt_file_path)
+        
+        # 显示提示信息
+        msg_box = QMessageBox()
+        msg_box.setIcon(QMessageBox.Information)
+        msg_box.setText(f"聚类成功，数据保存在 '{self.json_file_path}'")
+        msg_box.setWindowTitle("提示")
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.exec()
+        
+        cluster = Cluster.Cluster(self.json_file_path)
         cluster.exec()
         self.setEnabled(True)
-        pass
 
     def generate_wordcloud(self):
         # 弹出新窗口，生成词云
