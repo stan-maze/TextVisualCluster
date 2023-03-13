@@ -6,15 +6,17 @@ import json
 import os
 from util.json2text import JsonToTxtConverter
 import subprocess 
-from WordCloudMaster.create_word_cloud import create_wordscloud
+import WordCloudMaster.create_word_cloud as cwc
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 if __name__ == '__main__':
     def test():
         main_path = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir))
-        text_path = os.path.join(main_path, 'resource', 'test.txt')
-        pic_path = os.path.join(main_path, 'resource', 'love.png')
-        result_path = create_wordscloud(text_path, pic_path)
+        print(main_path)
+        text_path = os.path.join(main_path, 'main','resource', 'test.txt')
+        pic_path = os.path.join(main_path, 'main','resource', 'love.png')
+        print(pic_path)
+        result_path = cwc.create_wordscloud(text_path, pic_path)
         print(result_path)
     test()

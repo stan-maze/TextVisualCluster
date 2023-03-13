@@ -13,11 +13,9 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 main_path = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir))
 
 #停止词文件目录
-stopwords_filename = 'data/stopwords.txt'
+stopwords_filename = os.path.join(main_path,'WordCloudMaster','data','stopwords.txt')
 #字体文件目录
-font_filename = 'fonts/STFangSong.ttf'
-#前置目录
-prefix='../resource/'
+font_filename = os.path.join(main_path,'WordCloudMaster','fonts','STFangSong.ttf')
 #词云背景颜色
 word_background_color='white'
 #字体最大大小
@@ -53,22 +51,17 @@ def word_counting(words):
     return words_stat
 
 #生成词云函数
-def create_wordscloud(input_filename1,background_picture_filename):
-    input_filename=join(prefix,input_filename1)
+def create_wordscloud(input_filename,background_picture_filename):    
     words=cut(input_filename)
     words_stat=word_counting(words)
-    print('# of different words =', len(words_stat))
-    input_prefix = input_filename1
-    if input_filename1.find('.') != -1:
-        input_prefix = '.'.join(input_filename1.split('.')[:-1])
-    
-
+    print('# of different words =', len(words_stat))       
+    input_prefix = '.'.join(input_filename[-6:-5])   
     if background_picture_filename[-4:] != '.png' and background_picture_filename[-4:] != '.jpg':
         print('# of different words =', len(words_stat))
         return 0
-    background_picture_filename1 = join(prefix, background_picture_filename)
-    if isfile(background_picture_filename1):        
-        bimg = imageio.imread(background_picture_filename1)
+    
+    if isfile(background_picture_filename):        
+        bimg = imageio.imread(background_picture_filename)
         wordcloud = WordCloud(font_path=font_filename, background_color=word_background_color,
                                 mask=bimg, max_font_size=word_size, random_state=100)
         wordcloud = wordcloud.fit_words(
@@ -78,7 +71,7 @@ def create_wordscloud(input_filename1,background_picture_filename):
         wordcloud.recolor(color_func=bimgColors)
 
         # output_filename = prefix + '_' + input_prefix + '.png'
-        output_filename = input_prefix + '_cloud.png'
+        output_filename = os.path.join(main_path,'resource',input_prefix+'_cloud.png')
 
         print('Saving', output_filename)
         wordcloud.to_file(output_filename)
