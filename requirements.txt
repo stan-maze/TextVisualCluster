@@ -1,6 +1,8 @@
 pyside6
 pandas
 openpyxl
+re
+xlrd
 pywin32
 numpy==1.21.0
 wordcloud==1.8.1
