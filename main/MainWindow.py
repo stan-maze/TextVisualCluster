@@ -9,13 +9,17 @@ from PySide6.QtWidgets import (
 
 
 import WordCloud, Cluster
-from util.xlsx2text import XlsxToTxtConverter
+from util.Converter import XlsxToTxtConverter
 xlsxconv = XlsxToTxtConverter()
 from util.cluster_theme import ClusterTool
 clustertool = ClusterTool()
-
+import re
+import xlrd
+import openpyxl
 import os
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -62,18 +66,35 @@ class MainWindow(QMainWindow):
         if file_name:
             self.xlsx_file_path = file_name
             # 读取 Excel 文件内容
-            df = pd.read_excel(file_name, engine='openpyxl')
-            # 将 DataFrame 转换为字符串，并显示在文本框中
-            text = df.to_string(index=True, justify='left')
-            self.text_edit.setPlainText(text)
+            data = []
+            if file_name.endswith('.xls'):
+                workbook = xlrd.open_workbook(self.xlsx_file_path)
+                sheet = workbook.sheet_by_index(0)
+                data = [str(cell.value) for row in range(sheet.nrows) for cell in sheet.row(row)]
+            else:
+                workbook = openpyxl.load_workbook(self.xlsx_file_path, data_only=True)
+                sheet = workbook.active
+                data = [str(cell.value) for row in sheet.iter_rows() for cell in row]
+
+            def remove_html_tags(text):
+                # 去除html标签
+                TAG_RE = re.compile(r'<[^>]+>')
+                return TAG_RE.sub('', text)
+            # 去除空行
+            data = [text for text in data if text.strip() != '']
+            # 去除html标签
+            data = [remove_html_tags(text) for text in data]
+            text = '\n'.join(data)
             
+            self.text_edit.setPlainText(text)
+
             # 转换txt保存
             self.txt_file_path = xlsxconv.convert_to_txt_file(file_name)
 
             # 启用生成聚类和词云的按钮
             self.btn_cluster.setDisabled(False)
-            # 
             self.btn_wordcloud.setDisabled(False)
+
 
 
     def generate_cluster(self):

@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
 )
 import json
 import os
-from util.json2text import JsonToTxtConverter
+from util.Converter import JsonToTxtConverter
 json2text = JsonToTxtConverter()
 import subprocess 
 from WordCloudMaster import create_word_cloud as CWC
