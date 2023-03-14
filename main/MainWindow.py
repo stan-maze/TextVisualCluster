@@ -6,8 +6,6 @@ from PySide6.QtWidgets import (
     QPushButton, QFileDialog, QTextEdit, 
     QVBoxLayout, QHBoxLayout, QMessageBox
 )
-
-
 import WordCloud, Cluster
 from util.Converter import XlsxToTxtConverter
 xlsxconv = XlsxToTxtConverter()
@@ -19,43 +17,30 @@ import openpyxl
 import os
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
+###导入分离的ui文件
+from main_ui import my_ui
 
-class MainWindow(QMainWindow):
+class MainWindow(my_ui,QMainWindow):
     def __init__(self):
-        super().__init__()
-        
+
+        super(MainWindow, self).__init__()
+        ##调用ui
+        self.setupUi(self)
+
         self.xlsx_file_path = None
         self.txt_file_path = None
         self.json_file_path = None
 
-        self.setWindowTitle("预习帮手")
-
-        self.central_widget = QWidget()
-        self.setCentralWidget(self.central_widget)
-
-        # 创建布局
-        self.layout = QVBoxLayout()
-        self.central_widget.setLayout(self.layout)
-
-        # 创建按钮
-        self.btn_open_file = QPushButton("选择文件")
-        self.btn_open_file.clicked.connect(self.open_file)
-        self.layout.addWidget(self.btn_open_file)
-
-        self.btn_cluster = QPushButton("生成聚类")
-        self.btn_cluster.clicked.connect(self.generate_cluster)
+        ##初始化控件
+        self.xlsx_file_path = None
+        self.txt_file_path = None
+        self.json_file_path = None
         self.btn_cluster.setDisabled(True)
-        self.layout.addWidget(self.btn_cluster)
-
-        self.btn_wordcloud = QPushButton("生成词云")
+        self.btn_open_file.clicked.connect(self.open_file)
+        self.btn_cluster.clicked.connect(self.generate_cluster)
         self.btn_wordcloud.clicked.connect(self.generate_wordcloud)
-        self.btn_wordcloud.setDisabled(True)
-        self.layout.addWidget(self.btn_wordcloud)
-
-        # 创建文本框
-        self.text_edit = QTextEdit()
         self.text_edit.setReadOnly(True)
-        self.layout.addWidget(self.text_edit)
+        self.btn_wordcloud.setDisabled(True)
 
     def open_file(self):
         # 打开文件选择对话框
