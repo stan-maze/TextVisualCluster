@@ -1,5 +1,7 @@
 
 from text_analysis_tools import DbscanClustering
+from text_analysis_tools import TopicKeywords
+
 import json
 import os
 
@@ -34,9 +36,14 @@ class ClusterTool:
         for k, v in result.items():
             json_cluster = {}
             json_cluster["clusterId"] = int(k.split("_")[1])
-            json_cluster["theme"] = ""
+            text = [data[i].strip() for i in v]
+            topic_keywords = TopicKeywords(train_data=text, n_components=1,
+                                    n_top_words=3, max_iter=15)
+            json_cluster["theme"] = ' '.join(list(topic_keywords.analysis().values())[0])
             json_cluster["num"] = len(v)
-            json_cluster["text"] = [data[i].strip() for i in v]
+            json_cluster["text"] = text
+            
+            
             json_data.append(json_cluster)
 
         # 输出为 JSON 文件

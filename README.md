@@ -2,12 +2,6 @@
 
 ## 库
 1. pip install -r requirement.txt
-1. pyside6
-1. wordcloud
-1. jieba
-1. pandas
-1. openpyxl
-1. pywin32
 
 
 ## 用法

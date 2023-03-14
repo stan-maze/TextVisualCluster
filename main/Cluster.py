@@ -14,6 +14,8 @@ from io import BytesIO
 import os
 # 否则matplotlib和qt的图像引擎冲突
 matplotlib.use('agg')
+plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 

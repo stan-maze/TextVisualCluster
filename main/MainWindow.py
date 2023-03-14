@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (
 import WordCloud, Cluster
 from util.xlsx2text import XlsxToTxtConverter
 xlsxconv = XlsxToTxtConverter()
-from util.cluster import ClusterTool
+from util.cluster_theme import ClusterTool
 clustertool = ClusterTool()
 
 import os
