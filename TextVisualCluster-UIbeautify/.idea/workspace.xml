@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="611b6fa7-089d-4294-a8d6-25e0015ddde6" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/main/WorldCloud_ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/Cluster.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/MainWindow.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloud.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/__test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/create_word_cloud.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/data/stopwords.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/data/templates/love.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/fonts/STFangSong.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/preprocess.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/WordCloudMaster/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/aaa.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/aaa.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/aaa.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/aaa_cloud.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/aaa_love_cloud.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/generateWordCloud.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/love.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/love_cloud.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/s_cloud.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/resource/test.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/testCluster.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/testUtil.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/testWordCloud.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/data/apple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/data/map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/data/simfang.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/data/stop_words.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/data/synonym.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/keyphrase/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/keyphrase/keyphrase.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/keywords/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/keywords/textrank.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/keywords/tfidf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/sentiment/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/sentiment/data/degreeDict.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/sentiment/data/jieba.dic" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/sentiment/data/notDict.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/sentiment/data/sentimentDict.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/sentiment/data/stopwords.txt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/sentiment/sentiment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/spell_correct/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/spell_correct/spell_correct.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/summarization/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/summarization/textrank_summarization.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/summarization/tfidf_summarization.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/synonym/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/synonym/synonym_dict.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/synonym/word2vec.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_classification/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_classification/fasttext.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_cluster/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_cluster/dbscan.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_cluster/kmeans.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_similarity/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_similarity/cosion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_similarity/edit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/text_similarity/simhash.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/topic_keywords/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/topic_keywords/topic_kwywords.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/triple_extraction/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/text_analysis_tools/api/triple_extraction/triple_extraction_ltp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/util/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/util/cluster_theme.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/util/json2text.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main/util/xlsx2text.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../requirements.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2N0CPycrZAJf1OPdUQ3wUrG6VCP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Ming/Desktop/TextVisualCluster-UIbeautify/main"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ming\Desktop\TextVisualCluster-UIbeautify\main" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.MainWindow">
+    <configuration name="Cluster_ui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="TextVisualCluster-UIbeautify" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/Cluster_ui.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="TextVisualCluster-UIbeautify" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main/MainWindow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.MainWindow" />
+        <item itemvalue="Python.Cluster_ui" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="611b6fa7-089d-4294-a8d6-25e0015ddde6" name="变更" comment="" />
+      <created>1678791592378</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678791592378</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
