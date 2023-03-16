@@ -37,6 +37,9 @@ class ImageJsonGenerator(Ui_Dialog,QDialog):
         self.WordCloudimage_path = os.path.join(PROJECT_DIR, f'wordcloud-master\love_test.png')
         self.setupUi(self)
 
+        # 界面样式
+        self.wordCloudQss()
+
 
         # 连接按钮的信号和槽函数
         self.btn_choose_json.clicked.connect(self.chooseJson)
@@ -97,3 +100,69 @@ class ImageJsonGenerator(Ui_Dialog,QDialog):
             self.image_label.setPixmap(pixmap)
         else:
             self.image_label.setText('图片不存在！')
+
+    def wordCloudQss(self):
+        self.btn_choose_json.setMinimumSize(100, 30)
+        self.btn_choose_json.setStyleSheet(
+            "QPushButton"
+            "{"
+            "font: 25 10pt '微软雅黑 Light';"
+            "color: rgb(0,0,0);"
+            "background-color: rgb(255,255,255);"
+            "border: none;"
+            "border-radius:4px;"
+            "border: 1px solid rgb(200,200,200);"
+            "}"
+            "QPushButton:hover"
+            "{"
+            "background-color: rgb(235,235,236);"
+            "}"
+            "QPushButton:pressed"
+            "{"
+            "background-color: rgb(235,235,236);"
+            "}"
+        )
+
+        self.btn_choose_image.setMinimumSize(100, 30)
+        self.btn_choose_image.setStyleSheet(
+            "QPushButton"
+            "{"
+            "font: 25 10pt '微软雅黑 Light';"
+            "color: rgb(0,0,0);"
+            "background-color: rgb(255,255,255);"
+            "border: none;"
+            "border-radius:4px;"
+            "border: 1px solid rgb(200,200,200);"
+            "}"
+            "QPushButton:hover"
+            "{"
+            "background-color: rgb(235,235,236);"
+            "}"
+            "QPushButton:pressed"
+            "{"
+            "background-color: rgb(235,235,236);"
+            "}"
+        )
+
+        self.btn_generate.setMinimumSize(100, 30)
+        self.btn_generate.setStyleSheet(
+            "QPushButton"
+            "{"
+            "font: 25 10pt '微软雅黑 Light';"
+            "color: rgb(0,0,0);"
+            "background-color: rgb(255,255,255);"
+            "border: none;"
+            "border-radius:4px;"
+            "border: 1px solid rgb(200,200,200);"
+            "}"
+            "QPushButton:hover"
+            "{"
+            "color: rgb(255,255,255);"
+            "background-color: rgb(78,110,242);"
+            "}"
+            "QPushButton:pressed"
+            "{"
+            "color: rgb(255,255,255);"
+            "background-color: rgb(69,98,219);"
+            "}"
+        )

@@ -32,6 +32,9 @@ class MainWindow(Ui_MainWindow,QMainWindow):
         self.txt_file_path = None
         self.json_file_path = None
 
+        # 设置样式
+        self.qss()
+
         ##初始化控件
 
         self.btn_cluster.setDisabled(True)
@@ -109,6 +112,124 @@ class MainWindow(Ui_MainWindow,QMainWindow):
         self.stackedWidget_2.addWidget(wordcloud)
         #self.setEnabled(True)
         # pass
+    def qss(self):
+        self.centralwidget.setStyleSheet(
+            ".QWidget "
+            "{"
+            "background-color: rgb(255, 255, 255);"
+            "border-radius:7px;"
+            "}"
+        )
+
+        self.btn_open_file.setMinimumSize(100, 30)
+        self.btn_open_file.setStyleSheet(
+            "QPushButton"
+            "{"
+            "font: 25 10pt '微软雅黑 Light';"
+            "color: rgb(255,255,255);"
+            "background-color: rgb(78,110,242);"
+            "border: none;"
+            "border-radius:4px;"
+            "}"
+            "QPushButton:hover"
+            "{"
+            "background-color: rgb(69,98,219);"
+            "}"
+            "QPushButton:pressed"
+            "{"
+            "background-color: rgb(69,98,219);"
+            "}"
+        )
+
+        self.btn_cluster.setMinimumSize(100, 30)
+        self.btn_cluster.setStyleSheet(
+            "QPushButton"
+            "{"
+            "font: 25 10pt '微软雅黑 Light';"
+            "color: rgb(255,255,255);"
+            "background-color: rgb(78,110,242);"
+            "border: none;"
+            "border-radius:4px;"
+            "}"
+            "QPushButton:hover"
+            "{"
+            "background-color: rgb(69,98,219);"
+            "}"
+            "QPushButton:pressed"
+            "{"
+            "background-color: rgb(69,98,219);"
+            "}"
+        )
+
+        self.btn_wordcloud.setMinimumSize(100, 30)
+        self.btn_wordcloud.setStyleSheet(
+            "QPushButton"
+            "{"
+            "font: 25 10pt '微软雅黑 Light';"
+            "color: rgb(255,255,255);"
+            "background-color: rgb(78,110,242);"
+            "border: none;"
+            "border-radius:4px;"
+            "}"
+            "QPushButton:hover"
+            "{"
+            "background-color: rgb(69,98,219);"
+            "}"
+            "QPushButton:pressed"
+            "{"
+            "background-color: rgb(69,98,219);"
+            "}"
+        )
+
+        self.text_edit.setStyleSheet(
+            "QTextEdit"
+            "{"
+            "border: 1px solid rgb(200, 200, 200);"
+            "border-radius:3px;"
+            "background-color: rgb(244, 250, 255);"
+            "}"
+        )
+
+        self.tabWidget.setStyleSheet(
+            "QTabWidget::pane"
+            "{"
+            "border: 1px solid rgb(78,110,242);"
+            "border-radius:3px;"
+            "}"
+            "QTabBar::tab:selected"
+            "{"
+            "border: 1px solid rgb(78,110,242);"
+            "border-top-left-radius: 2px;"
+            "border-top-right-radius: 2px;"
+            "font: 25 8pt '微软雅黑 Light';"
+            "color: rgb(255,255,255);"
+            "background-color: rgb(78,110,242);"
+            "min-width: 60px;"
+            "padding: 2px;"
+            "}"
+            "QTabBar::tab:hover"
+            "{"
+            "border: 1px solid rgb(78,110,242);"
+            "border-top-left-radius: 2px;"
+            "border-top-right-radius: 2px;"
+            "font: 25 8pt '微软雅黑 Light';"
+            "color: rgb(255,255,255);"
+            "background-color: rgb(78,110,242);"
+            "min-width: 60px;"
+            "padding: 2px;"
+            "}"
+            "QTabBar::tab:!selected"
+            "{"
+            "border: 1px solid rgb(200, 200, 200);"
+            "border-top-left-radius: 2px;"
+            "border-top-right-radius: 2px;"
+            "color: rgb(0,0,0);"
+            "background-color: rgb(244, 250, 255);"
+            "font: 25 8pt '微软雅黑 Light';"
+            "min-width: 60px;"
+            "padding: 2px;"
+            "}"
+        )
 
 
 if __name__ == '__main__':
