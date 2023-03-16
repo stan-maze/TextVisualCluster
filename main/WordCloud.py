@@ -11,7 +11,7 @@ from util.Converter import JsonToTxtConverter
 json2text = JsonToTxtConverter()
 import subprocess 
 from WordCloudMaster import create_word_cloud as CWC
-
+from WorldCloud_ui import Ui_Dialog
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class WorkerThread(QThread):
@@ -31,28 +31,12 @@ class WorkerThread(QThread):
         # subprocess.run([bat_file_path])
         self.generate_finished.emit(cloud_image_path)
 
-class ImageJsonGenerator(QDialog):
+class ImageJsonGenerator(Ui_Dialog,QDialog):
     def __init__(self):
         super().__init__()
         self.WordCloudimage_path = os.path.join(PROJECT_DIR, f'wordcloud-master\love_test.png')
+        self.setupUi(self)
 
-        self.setWindowTitle("生成词云")
-
-        # 创建布局
-        layout = QVBoxLayout()
-        self.setLayout(layout)
-
-        # 创建组件
-        self.btn_choose_json = QPushButton("选择 JSON 文件")
-        self.btn_choose_image = QPushButton("选择图片文件")
-        self.image_label = QLabel()
-        self.btn_generate = QPushButton("生成")
-
-        # 将组件添加到布局中
-        layout.addWidget(self.btn_choose_json)
-        layout.addWidget(self.btn_choose_image)
-        layout.addWidget(self.image_label)
-        layout.addWidget(self.btn_generate)
 
         # 连接按钮的信号和槽函数
         self.btn_choose_json.clicked.connect(self.chooseJson)

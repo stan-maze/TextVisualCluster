@@ -4,7 +4,8 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, 
     QPushButton, QFileDialog, QTextEdit, 
-    QVBoxLayout, QHBoxLayout, QMessageBox
+    QVBoxLayout, QHBoxLayout, QMessageBox,
+    QStackedWidget
 )
 import WordCloud, Cluster
 from util.Converter import XlsxToTxtConverter
@@ -18,9 +19,9 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 ###导入分离的ui文件
-from main_ui import my_ui
+from main_ui import Ui_MainWindow
 
-class MainWindow(my_ui,QMainWindow):
+class MainWindow(Ui_MainWindow,QMainWindow):
     def __init__(self):
 
         super(MainWindow, self).__init__()
@@ -32,9 +33,7 @@ class MainWindow(my_ui,QMainWindow):
         self.json_file_path = None
 
         ##初始化控件
-        self.xlsx_file_path = None
-        self.txt_file_path = None
-        self.json_file_path = None
+
         self.btn_cluster.setDisabled(True)
         self.btn_open_file.clicked.connect(self.open_file)
         self.btn_cluster.clicked.connect(self.generate_cluster)
@@ -82,31 +81,33 @@ class MainWindow(my_ui,QMainWindow):
 
 
 
+
     def generate_cluster(self):
-        # 弹出新窗口，生成聚类
-        
-        self.setEnabled(False)
+        # 删除刷新
+        for i in range(self.stackedWidget.count()):
+            self.stackedWidget.removeWidget(  self.stackedWidget.widget(i))
+        #self.setEnabled(False)
         # 执行聚类保存到相应json
-        self.json_file_path = clustertool.excuteCluster(self.txt_file_path)
-        
+        json_file_path = clustertool.excuteCluster(self.txt_file_path)
         # 显示提示信息
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Information)
-        msg_box.setText(f"聚类成功，数据保存在 '{self.json_file_path}'")
+        msg_box.setText(f"聚类成功，数据保存在 '{json_file_path}'")
         msg_box.setWindowTitle("提示")
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.exec()
-        
-        cluster = Cluster.Cluster(self.json_file_path)
-        cluster.exec()
-        self.setEnabled(True)
+        cluster = Cluster.Cluster(json_file_path)
+        self.stackedWidget.addWidget(cluster)
+        #self.setEnabled(True)
 
     def generate_wordcloud(self):
         # 弹出新窗口，生成词云
-        self.setEnabled(False)
+        #self.setEnabled(False)
+        for i in range(self.stackedWidget.count()):
+            self.stackedWidget_2.removeWidget(self.stackedWidget.widget(i))
         wordcloud = WordCloud.ImageJsonGenerator()
-        wordcloud.exec()
-        self.setEnabled(True)
+        self.stackedWidget_2.addWidget(wordcloud)
+        #self.setEnabled(True)
         # pass
 
 
