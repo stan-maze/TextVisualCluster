@@ -39,14 +39,16 @@ class Ui_Dialog(object):
         self.setLayout(self.layout)
 
         # 创建组件
-        self.btn_choose_json = QPushButton("选择 JSON 文件")
+        #self.btn_choose_json = QPushButton("选择 JSON 文件")
         self.btn_choose_image = QPushButton("选择图片文件")
+        self.info_label = QLabel()
         self.image_label = QLabel()
         self.btn_generate = QPushButton("生成")
 
         # 将组件添加到布局中
-        self.layout.addWidget(self.btn_choose_json)
+        #self.layout.addWidget(self.btn_choose_json)
         self.layout.addWidget(self.btn_choose_image)
+        self.layout.addWidget(self.info_label)
         self.layout.addWidget(self.image_label)
         self.layout.addWidget(self.btn_generate)
         self.retranslateUi(Dialog)

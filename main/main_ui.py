@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(664, 455)
+        MainWindow.resize(1000, 618)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -73,10 +73,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.btn_wordcloud = QPushButton(self.tab_2)
-        self.btn_wordcloud.setObjectName(u"btn_wordcloud")
+       # self.btn_wordcloud = QPushButton(self.tab_2)
+        #self.btn_wordcloud.setObjectName(u"btn_wordcloud")
 
-        self.horizontalLayout_2.addWidget(self.btn_wordcloud)
+        #self.horizontalLayout_2.addWidget(self.btn_wordcloud)
 
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_2)
@@ -123,7 +123,7 @@ class Ui_MainWindow(object):
         self.btn_open_file.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u6587\u4ef6", None))
         self.btn_cluster.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210\u805a\u7c7b", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"\u805a\u7c7b", None))
-        self.btn_wordcloud.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210\u8bcd\u4e91", None))
+        #self.btn_wordcloud.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210\u8bcd\u4e91", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"\u8bcd\u4e91", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u9884\u4e60\u5c0f\u5e2e\u624b", None))
     # retranslateUi
