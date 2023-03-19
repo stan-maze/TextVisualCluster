@@ -46,8 +46,6 @@ class XlsxToTxtConverter:
         return TAG_RE.sub('', text)
 
 
-
-
 class JsonToTxtConverter:
     def __init__(self):
         self.json_file_path = None

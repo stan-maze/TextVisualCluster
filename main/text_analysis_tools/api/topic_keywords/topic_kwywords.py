@@ -7,17 +7,8 @@ from sklearn.decomposition import LatentDirichletAllocation
 
 
 class TopicKeywords:
-    """
-    主题发现
-    """
+    
     def __init__(self, train_data, n_components=10, n_top_words=50, max_iter=50):
-        """
-        :param train_data: 训练数据
-                      格式：   ["张三在中国移动工作", "你是谁？"]
-        :param n_components:  主题数目
-        :param n_top_words:  每个主题提取的主题词数目
-        :param max_iter:  迭代次数
-        """
         self.train_data = [" ".join(jieba.lcut(data)) for data in train_data]
         self.n_components = n_components
         self.n_top_words = n_top_words
