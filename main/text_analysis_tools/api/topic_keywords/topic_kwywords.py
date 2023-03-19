@@ -32,5 +32,9 @@ class TopicKeywords:
                                         learning_offset=50.,
                                         random_state=0)
         lda.fit(tf)
-        tf_feature_names = tf_vectorizer.get_feature_names()
+        tf_feature_names = None
+        if hasattr(tf_vectorizer, "get_feature_names"):
+            tf_feature_names = tf_vectorizer.get_feature_names()
+        else:
+            tf_feature_names = tf_vectorizer.get_feature_names_out()
         return self.print_top_words(lda, tf_feature_names, self.n_top_words)

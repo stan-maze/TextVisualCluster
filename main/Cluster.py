@@ -17,31 +17,14 @@ matplotlib.use('agg')
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+from Cluster_ui import Ui_Dialog
 
-
-class Cluster(QDialog):
+class Cluster(Ui_Dialog,QDialog):
     def __init__(self, json_file_path):
         super().__init__()
         self.json_file_path = json_file_path
 
-        self.setWindowTitle("JSON可视化")
-        
-        layout = QVBoxLayout()
-        self.setLayout(layout)
-
-        self.table = QTableWidget()
-        self.image_label = QLabel()
-
-        layout.addWidget(self.table)
-        layout.addWidget(self.image_label)
-        
-        self.setFixedSize(500, 600)
-        self.table.setFixedSize(400, 200)
-        self.image_label.setFixedSize(500, 400)
-
-        # 创建表格
-        self.table.setColumnCount(2)
-        self.table.setHorizontalHeaderLabels(['主题', '占比'])
+        self.setupUi(self)
         
 
         # 读取JSON文件
@@ -93,8 +76,4 @@ class Cluster(QDialog):
         
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = Cluster()
-    window.show()
-    sys.exit(app.exec())
+
