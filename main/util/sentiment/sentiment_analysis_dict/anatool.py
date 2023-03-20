@@ -43,4 +43,4 @@ if __name__ =='__main__':
     text = '大美女'
     text = '帅哥'
     text = '我妈说明儿不让出去玩'
-    print(predict(text))
+    print(tool().predict(text))

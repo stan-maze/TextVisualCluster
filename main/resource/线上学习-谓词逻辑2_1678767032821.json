@@ -1,7 +1,7 @@
 [
     {
         "clusterId": 0,
-        "theme": "公式|理解",
+        "theme": "公式,理解",
         "mood": "好",
         "num": 23,
         "text": [
@@ -32,7 +32,7 @@
     },
     {
         "clusterId": -1,
-        "theme": "规则|理解",
+        "theme": "规则,理解",
         "mood": "不好",
         "num": 39,
         "text": [
@@ -79,7 +79,7 @@
     },
     {
         "clusterId": 1,
-        "theme": "推理|证明",
+        "theme": "推理,证明",
         "mood": "不好",
         "num": 10,
         "text": [
@@ -97,7 +97,7 @@
     },
     {
         "clusterId": 2,
-        "theme": "不是|理解",
+        "theme": "不是,理解",
         "mood": "不好",
         "num": 6,
         "text": [
@@ -111,7 +111,7 @@
     },
     {
         "clusterId": 3,
-        "theme": "量词|消去",
+        "theme": "量词,消去",
         "mood": "好",
         "num": 3,
         "text": [

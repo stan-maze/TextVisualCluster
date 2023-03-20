@@ -130,7 +130,7 @@ class ClusterTool:
             
             # json_cluster["theme"] = self.textrank_summarization(s, ratio=0.2)
             
-            json_cluster["theme"] = '|'.join(list(topic_keywords.analysis().values())[0])
+            json_cluster["theme"] = ','.join(list(topic_keywords.analysis().values())[0])
             
             ppp = mytool.predict(s)
             print(ppp)
