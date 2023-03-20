@@ -12,6 +12,7 @@ class XlsxToTxtConverter:
         self.file_type = None
 
     def convert_to_txt_file(self, file_path):
+        print(f"Converting {file_path} to txt...")
         self.xlsx_file_path = file_path
         self.txt_file_path = os.path.splitext(file_path)[0] + '.txt'
         self.file_type = os.path.splitext(file_path)[1].lower()
@@ -53,6 +54,7 @@ class JsonToTxtConverter:
         self.txt_file_path = None
 
     def convert_to_txt_file(self, json_file_path):
+        print(f"Converting {json_file_path} to txt...")
         self.json_file_path = json_file_path
         self.txt_file_path = os.path.splitext(json_file_path)[0] + '.txt'
         with open(self.json_file_path, 'r', encoding='utf-8') as f:
@@ -65,9 +67,16 @@ class JsonToTxtConverter:
         return self.txt_file_path
 
 
-def test():
-    xlsx = XlsxToTxtConverter()
-    txtpath = xlsx.convert_to_txt_file('../resource/线上学习-关系2_1678766818257.xls')
-    print(txtpath)
+def main():
+    xlsx_converter = XlsxToTxtConverter()
+    json_converter = JsonToTxtConverter()
 
-# test()
+    # Convert xlsx to txt
+    xlsx_file_path = '../resource/线上学习-关系2_1678766818257.xls'
+    txt_file_path = xlsx_converter.convert_to_txt_file(xlsx_file_path)
+    print(f"XLSX to TXT: {txt_file_path}")
+
+    # Convert json to txt
+    json_file_path = '../resource/线上学习-关系2_1678766818257.json'
+    txt_file_path = json_converter.convert_to_txt_file(json_file_path)
+    print(f"JSON to TXT: {txt_file_path}")

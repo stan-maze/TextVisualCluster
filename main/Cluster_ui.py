@@ -50,8 +50,8 @@ class Ui_Dialog(object):
         self.image_label.setFixedSize(500, 400)
 
         # 创建表格
-        self.table.setColumnCount(2)
-        self.table.setHorizontalHeaderLabels(['主题', '占比'])
+        self.table.setColumnCount(3)
+        self.table.setHorizontalHeaderLabels(['主题', '占比', '学生反响'])
 
 
     # setupUi

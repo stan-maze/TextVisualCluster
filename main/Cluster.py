@@ -36,6 +36,8 @@ class Cluster(Ui_Dialog,QDialog):
         # 填充表格
         percentages = []
         themes = []
+        
+        
         for row, item in enumerate(data):
             self.table.insertRow(row)
             self.table.setItem(row, 0, QTableWidgetItem(item['theme']))
@@ -45,16 +47,20 @@ class Cluster(Ui_Dialog,QDialog):
             # 创建百分比条和文本标签
             progress_bar = QProgressBar()
             progress_bar.setValue(text_percentage)
-            label = QLabel(str(text_percentage) + '%')
+            # label = QLabel(str(text_percentage) + '%')
             # 创建布局，并将百分比条和文本标签添加到其中
             hbox = QHBoxLayout()
-            hbox.addWidget(label)
+            # hbox.addWidget(label)
             hbox.addWidget(progress_bar)
             hbox.setContentsMargins(0, 0, 0, 0)
             hbox.setAlignment(Qt.AlignCenter)
             # 将布局添加到表格中
             widget = QWidget()
             widget.setLayout(hbox)
+            self.table.setItem(row, 2, QTableWidgetItem(item['mood']))
+            
+            
+            
             self.table.setCellWidget(row, 1, widget)
 
         # 生成饼状图

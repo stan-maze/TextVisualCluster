@@ -5,7 +5,8 @@ import pandas
 import numpy as np
 from wordcloud import WordCloud
 import imageio
-from wordcloud import WordCloud, ImageColorGenerator
+from wordcloud import ImageColorGenerator
+from wordcloud import WordCloud
 import os
 from os import listdir
 from os.path import isfile, join
@@ -82,19 +83,18 @@ def create_wordscloud(input_filename,background_picture_filename):
 
 
 if __name__ == '__main__':
-    # def test():
-    #     main_path = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir))
-    #     text_path = os.path.join(main_path, 'resource', 'test.txt')
-    #     pic_path = os.path.join(main_path, 'resource', 'love.png')
-    #     result_path = create_wordscloud(text_path, pic_path)
-    #     print(result_path)
-    # test()
-    pass
+    def test():
+        main_path = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir))
+        text_path = os.path.join(main_path, 'resource', 'test.txt')
+        pic_path = os.path.join(main_path, 'resource', 'love.png')
+        result_path = create_wordscloud(text_path, pic_path)
+        print(result_path)
+    test()
     
-    # print(sys.argv)
-    # if len(sys.argv) == 3:
-    #     create_wordscloud(sys.argv[1],sys.argv[2])
-    # # if len(sys.argv) == 2:
-    # #     create_wordscloud(sys.argv[0],sys.argv[1])
-    # else:
-    #     print('[usage] <input>')
+    print(sys.argv)
+    if len(sys.argv) == 3:
+        create_wordscloud(sys.argv[1],sys.argv[2])
+    # if len(sys.argv) == 2:
+    #     create_wordscloud(sys.argv[0],sys.argv[1])
+    else:
+        print('[usage] <input>')
