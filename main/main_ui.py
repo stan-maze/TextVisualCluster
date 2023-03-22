@@ -56,10 +56,10 @@ class Ui_MainWindow(object):
         self.tab.setObjectName(u"tab")
         self.verticalLayout_3 = QVBoxLayout(self.tab)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.btn_cluster = QPushButton(self.tab)
-        self.btn_cluster.setObjectName(u"btn_cluster")
+        # self.btn_cluster = QPushButton(self.tab)
+        # self.btn_cluster.setObjectName(u"btn_cluster")
 
-        self.verticalLayout_3.addWidget(self.btn_cluster)
+        # self.verticalLayout_3.addWidget(self.btn_cluster)
 
         self.verticalLayout_5 = QVBoxLayout()
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
@@ -121,7 +121,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.btn_open_file.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u6587\u4ef6", None))
-        self.btn_cluster.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210\u805a\u7c7b", None))
+        # self.btn_cluster.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210\u805a\u7c7b", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"\u805a\u7c7b", None))
         #self.btn_wordcloud.setText(QCoreApplication.translate("MainWindow", u"\u751f\u6210\u8bcd\u4e91", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"\u8bcd\u4e91", None))

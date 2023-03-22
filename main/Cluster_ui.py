@@ -23,7 +23,7 @@ from PySide6.QtGui import QPixmap, QBrush, QPen, QColor
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QLabel,
     QVBoxLayout, QHBoxLayout, QTableWidget,
-    QTableWidgetItem, QProgressBar, QDialog
+    QTableWidgetItem, QProgressBar, QDialog, QComboBox, QLineEdit, QPushButton
 )
 import matplotlib
 from matplotlib import pyplot as plt
@@ -38,13 +38,27 @@ class Ui_Dialog(object):
 
         self.layout = QVBoxLayout(Dialog)
 
-
+        self.algorithm_label = QLabel("选择聚类算法")
+        self.combo_cluster = QComboBox()
+        self.combo_cluster.addItem("kmeans")
+        self.combo_cluster.addItem("dbscan")
+        self.combo_cluster.setCurrentIndex(0)
+        self.param_label = QLabel("设置k值：")
+        self.param_lineedit = QLineEdit()
+        self.param_lineedit.setText("6")
+        self.btn_cluster = QPushButton("生成聚类")
         self.table = QTableWidget()
         self.image_label = QLabel()
 
+        self.layout.addWidget(self.algorithm_label)
+        self.layout.addWidget(self.combo_cluster)
+        self.layout.addWidget(self.param_label)
+        self.layout.addWidget(self.param_lineedit)
+        self.layout.addWidget(self.btn_cluster)
         self.layout.addWidget(self.table)
         self.layout.addWidget(self.image_label)
 
+        self.table.setVisible(False)
 
         self.table.setFixedSize(400, 200)
         self.image_label.setFixedSize(500, 400)
@@ -52,6 +66,8 @@ class Ui_Dialog(object):
         # 创建表格
         self.table.setColumnCount(3)
         self.table.setHorizontalHeaderLabels(['主题', '占比', '学生反响'])
+
+        self.combo_cluster.currentIndexChanged.connect(self.show)
 
 
     # setupUi
@@ -61,3 +77,10 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
     # retranslateUi
 
+    def show(self):
+        if self.combo_cluster.currentText() == "kmeans":
+            self.param_label.setText("设置k值：")
+            self.param_lineedit.setText("6")
+        elif self.combo_cluster.currentText() == "dbscan":
+            self.param_label.setText("设置距离：")
+            self.param_lineedit.setText("0.135")

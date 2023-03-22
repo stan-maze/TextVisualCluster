@@ -38,9 +38,9 @@ class MainWindow(Ui_MainWindow,QMainWindow):
 
         ##初始化控件
 
-        self.btn_cluster.setDisabled(True)
+        # self.btn_cluster.setDisabled(True)
         self.btn_open_file.clicked.connect(self.open_file)
-        self.btn_cluster.clicked.connect(self.generate_cluster)
+        # self.btn_cluster.clicked.connect(self.generate_cluster)
         #self.btn_wordcloud.clicked.connect(self.generate_wordcloud)
         self.text_edit.setReadOnly(True)
         #self.btn_wordcloud.setDisabled(True)
@@ -80,27 +80,32 @@ class MainWindow(Ui_MainWindow,QMainWindow):
             self.txt_file_path = xlsxconv.convert_to_txt_file(file_name)
 
             # 启用生成聚类和词云的按钮
-            self.btn_cluster.setDisabled(False)
+            # self.btn_cluster.setDisabled(False)
             #self.btn_wordcloud.setDisabled(False)
+
+            # 打开文件后显示聚类和词云的操作界面
+            self.generate_cluster()
             self.generate_wordcloud()
 
     def generate_cluster(self):
-        # 删除刷新
+        # # 删除刷新
         for i in range(self.stackedWidget.count()):
-            self.stackedWidget.removeWidget(  self.stackedWidget.widget(i))
-        #self.setEnabled(False)
-        # 执行聚类保存到相应json
-        self.json_file_path, self.excel_file_path = clustertool.excuteCluster(self.txt_file_path)
-        # 显示提示信息
-        msg_box = QMessageBox()
-        msg_box.setIcon(QMessageBox.Information)
-        msg_box.setText(f"聚类成功，数据保存为相应{self.json_file_path}和\n{self.excel_file_path}")
-        msg_box.setWindowTitle("提示")
-        msg_box.setStandardButtons(QMessageBox.Ok)
-        msg_box.exec()
-        cluster = Cluster.Cluster(self.json_file_path)
-        self.stackedWidget.addWidget(cluster)
-        #self.setEnabled(True)
+            self.stackedWidget.removeWidget(self.stackedWidget.widget(i))
+        # #self.setEnabled(False)
+        # # 执行聚类保存到相应json
+        # self.json_file_path, self.excel_file_path = clustertool.excuteCluster(self.txt_file_path)
+        # # 显示提示信息
+        # msg_box = QMessageBox()
+        # msg_box.setIcon(QMessageBox.Information)
+        # msg_box.setText(f"聚类成功，数据保存为相应{self.json_file_path}和\n{self.excel_file_path}")
+        # msg_box.setWindowTitle("提示")
+        # msg_box.setStandardButtons(QMessageBox.Ok)
+        # msg_box.exec()
+        # cluster = Cluster.Cluster(self.json_file_path)
+        # self.stackedWidget.addWidget(cluster)
+        # #self.setEnabled(True)
+        self.cluster = Cluster.Cluster(self.txt_file_path)
+        self.stackedWidget.addWidget(self.cluster)
 
     def generate_wordcloud(self):
         # 弹出新窗口，生成词云
@@ -141,25 +146,25 @@ class MainWindow(Ui_MainWindow,QMainWindow):
             "}"
         )
 
-        self.btn_cluster.setMinimumSize(100, 30)
-        self.btn_cluster.setStyleSheet(
-            "QPushButton"
-            "{"
-            "font: 25 10pt '微软雅黑 Light';"
-            "color: rgb(255,255,255);"
-            "background-color: rgb(78,110,242);"
-            "border: none;"
-            "border-radius:4px;"
-            "}"
-            "QPushButton:hover"
-            "{"
-            "background-color: rgb(69,98,219);"
-            "}"
-            "QPushButton:pressed"
-            "{"
-            "background-color: rgb(69,98,219);"
-            "}"
-        )
+        # self.btn_cluster.setMinimumSize(100, 30)
+        # self.btn_cluster.setStyleSheet(
+        #     "QPushButton"
+        #     "{"
+        #     "font: 25 10pt '微软雅黑 Light';"
+        #     "color: rgb(255,255,255);"
+        #     "background-color: rgb(78,110,242);"
+        #     "border: none;"
+        #     "border-radius:4px;"
+        #     "}"
+        #     "QPushButton:hover"
+        #     "{"
+        #     "background-color: rgb(69,98,219);"
+        #     "}"
+        #     "QPushButton:pressed"
+        #     "{"
+        #     "background-color: rgb(69,98,219);"
+        #     "}"
+        # )
 
         # self.btn_wordcloud.setMinimumSize(100, 30)
         # self.btn_wordcloud.setStyleSheet(
