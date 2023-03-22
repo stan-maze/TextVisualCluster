@@ -30,10 +30,10 @@ class XlsxToTxtConverter:
 
         # 去除head
         self.data = self.data[1:]
-        # 去除空行
-        self.data = [text for text in self.data if text.strip() != '']
         # 去除html标签
         self.data = [self.remove_html_tags(text) for text in self.data]
+        # 去除空行
+        self.data = [text for text in self.data if text.strip() != '']
 
         with open(self.txt_file_path, 'w', encoding='utf-8') as f:
             f.writelines([sentence + '\n' for sentence in self.data])

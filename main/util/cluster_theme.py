@@ -1,21 +1,4 @@
 
-from text_analysis_tools import KmeansClustering
-from text_analysis_tools import DbscanClustering
-from text_analysis_tools import CosionSimilarity
-from text_analysis_tools import EditSimilarity
-from text_analysis_tools import SimHashSimilarity
-from text_analysis_tools import TfidfKeywords
-from text_analysis_tools import TextRankKeywords
-from text_analysis_tools import KeyPhraseExtraction
-from text_analysis_tools import SentimentAnalysis
-from text_analysis_tools import SpellCorrect
-from text_analysis_tools import TfidfSummarization
-from text_analysis_tools import TextRankSummarization
-from text_analysis_tools import TopicKeywords
-from text_analysis_tools import Fasttext
-from text_analysis_tools import Word2VecSynonym
-from text_analysis_tools import SynonymDict
-from text_analysis_tools import TripleExtraction
 
 import json
 import os
@@ -25,10 +8,14 @@ import openpyxl
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Add a subdirectory of this directory to the module search path
 subdir_path = os.path.join(script_dir, 'sentiment')
 print(script_dir)
 sys.path.append(subdir_path)
+
+
+from util.text_cluster.dbscan import DbscanClustering
+from util.text_cluster.kmeans import KmeansClustering
+from util.topic_keywords.topic_kwywords import TopicKeywords
 
 
 from util.sentiment.sentiment_analysis_dict.anatool import tool
@@ -106,11 +93,14 @@ class ClusterTool:
         dbscan = DbscanClustering()
         result = dbscan.dbscan(corpus_path=data_path, eps=eps, min_samples=min_samples, fig=fig)
         return result
+    
         
     def excuteCluster(self, txt_path,
-                      eps=0.055, min_samples=3, fig=False):
+                      eps=0.18, min_samples=2, fig=False):
         print(txt_path)
         result = self.dbscan_cluster(data_path = txt_path, eps=eps, min_samples=min_samples, fig=fig)
+        # kcluster = KmeansClustering()
+        # result = kcluster.kmeans(txt_path, n_clusters = 6)
         
         with open(txt_path, "r", encoding="utf-8") as f:
             data = f.readlines()
