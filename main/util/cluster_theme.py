@@ -98,9 +98,9 @@ class ClusterTool:
     def excuteCluster(self, txt_path,
                       eps=0.18, min_samples=2, fig=False):
         print(txt_path)
-        result = self.dbscan_cluster(data_path = txt_path, eps=eps, min_samples=min_samples, fig=fig)
-        # kcluster = KmeansClustering()
-        # result = kcluster.kmeans(txt_path, n_clusters = 6)
+        # result = self.dbscan_cluster(data_path = txt_path, eps=eps, min_samples=min_samples, fig=fig)
+        kcluster = KmeansClustering()
+        result = kcluster.kmeans(txt_path, n_clusters = 6)
         
         with open(txt_path, "r", encoding="utf-8") as f:
             data = f.readlines()
