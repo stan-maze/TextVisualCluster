@@ -103,6 +103,7 @@ class ClusterTool:
         elif method == 'kmeans':
             kcluster = KmeansClustering()
             result = kcluster.kmeans(txt_path, n_clusters=int(arg))
+
         
         with open(txt_path, "r", encoding="utf-8") as f:
             data = f.readlines()
