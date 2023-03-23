@@ -19,9 +19,7 @@ jieba.load_userdict(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'di
 
 
 class SentimentAnalysis():
-    """
-    Sentiment Analysis with some dictionarys
-    """      
+    
     def sentiment_score_list(self,dataset):
         seg_sentence = tool.sentence_split_regex(dataset)
         count1,count2 = [],[]
