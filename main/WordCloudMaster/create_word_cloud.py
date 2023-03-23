@@ -55,10 +55,10 @@ def word_counting(words):
 def create_wordscloud(input_filename,background_picture_filename):    
     words=cut(input_filename)
     words_stat=word_counting(words)
-    print('# of different words =', len(words_stat))       
+    print('of different words =', len(words_stat))       
     input_prefix = '.'.join(input_filename[-6:-5])   
     if background_picture_filename[-4:] != '.png' and background_picture_filename[-4:] != '.jpg':
-        print('# of different words =', len(words_stat))
+        print('of different words =', len(words_stat))
         return 0
     
     if isfile(background_picture_filename):        

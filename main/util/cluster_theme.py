@@ -94,7 +94,6 @@ class ClusterTool:
         result = dbscan.dbscan(corpus_path=data_path, eps=eps, min_samples=min_samples, fig=fig)
         return result
     
-        
     def excuteCluster(self, txt_path, method = 'dbscan', arg = 0.18, 
                       min_samples=2, fig=False):
         print(txt_path)
