@@ -52,7 +52,8 @@ def word_counting(words):
     return words_stat
 
 #生成词云函数
-def create_wordscloud(input_filename,background_picture_filename):    
+def create_wordscloud(input_filename,background_picture_filename):
+    print(background_picture_filename)
     words=cut(input_filename)
     words_stat=word_counting(words)
     print('of different words =', len(words_stat))       

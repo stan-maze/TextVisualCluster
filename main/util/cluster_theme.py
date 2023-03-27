@@ -18,7 +18,9 @@ from util.text_cluster.kmeans import KmeansClustering
 from util.topic_keywords.topic_kwywords import TopicKeywords
 
 
-from util.sentiment.sentiment_analysis_dict.anatool import tool
+# from util.sentiment.sentiment_analysis_dict.anatool import tool
+
+from util.sentiment_analysis_dict.anatool import tool
 
 
 def convert_to_excel_file(json_file_path):

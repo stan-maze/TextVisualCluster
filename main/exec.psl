@@ -1,0 +1,15 @@
+New-Item -ItemType Directory -Path ".\dist\MainWindow\util\sentiment_analysis_dict\dict";
+New-Item -ItemType Directory -Path ".\dist\MainWindow\util\data";
+
+
+Copy-Item -Path ".\util\sentiment_analysis_dict\dict\*" -Destination ".\dist\MainWindow\util\sentiment_analysis_dict\dict";
+Copy-Item -Path ".\util\data\*" -Destination ".\dist\MainWindow\util\data";
+Copy-Item -Path ".\WordCloudMaster\data\stopwords.txt" -Destination ".\dist\MainWindow\wordcloud\stopwords";
+
+
+Start-Process -FilePath ".\dist\MainWindow\MainWindow.exe";
+
+
+New-Item -ItemType Directory -Path ".\dist\MainWindow\WordCloudMaster\data";
+
+Copy-Item -Path ".\WordCloudMaster\data\*" -Destination ".\dist\MainWindow\WordCloudMaster\data";

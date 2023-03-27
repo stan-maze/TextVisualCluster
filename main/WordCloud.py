@@ -10,8 +10,9 @@ import os
 from util.Converter import JsonToTxtConverter
 json2text = JsonToTxtConverter()
 import subprocess 
-from WordCloudMaster import create_word_cloud as CWC
+# from WordCloudMaster import create_word_cloud as CWC
 from WorldCloud_ui import Ui_Dialog
+from util.keyphrase.keyphrase import generate
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class WorkerThread(QThread):
@@ -25,7 +26,8 @@ class WorkerThread(QThread):
     def run(self):
         txt_path = json2text.convert_to_txt_file(self.json_path)
         print(txt_path, self.image_path)
-        cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)
+        # cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)
+        cloud_image_path =generate(txt_path, self.image_path)
         print('路径: ', txt_path, self.image_path, cloud_image_path, sep='\n')
         # bat_file_path = os.path.join(os.path.dirname(self.json_path), "generateWordCloud.bat")
         # subprocess.run([bat_file_path])
@@ -41,7 +43,8 @@ class WorkerThread2(QThread):
     def run(self):
         txt_path = self.txt_path
         print(txt_path, self.image_path)
-        cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)
+        # cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)
+        cloud_image_path =generate(txt_path, self.image_path)
         print('路径: ', txt_path, self.image_path, cloud_image_path, sep='\n')
         # bat_file_path = os.path.join(os.path.dirname(self.json_path), "generateWordCloud.bat")
         # subprocess.run([bat_file_path])
@@ -93,7 +96,7 @@ class ImageJsonGenerator(Ui_Dialog,QDialog):
             return
         #if not self.json_path or not self.image_path:
         if not self.txt_path or not self.image_path:
-            QMessageBox.warning(self, '警告', '请选择JSON文件和图片!')
+            QMessageBox.warning(self, '警告', '请选择图片!')
             return
 
         self.is_generating = True
