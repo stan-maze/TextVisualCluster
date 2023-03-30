@@ -32,6 +32,9 @@ class MainWindow(Ui_MainWindow,QMainWindow):
         self.xlsx_file_path = None
         self.txt_file_path = None
         self.json_file_path = None
+        # Todo
+        # save_path是全局性的, 用合适的方法写入MainWindow的save_path即可, 注意路径要以/结尾
+        self.save_path = 'D:/temp/'
 
         # 设置样式
         self.qss()
@@ -44,6 +47,7 @@ class MainWindow(Ui_MainWindow,QMainWindow):
         #self.btn_wordcloud.clicked.connect(self.generate_wordcloud)
         self.text_edit.setReadOnly(True)
         #self.btn_wordcloud.setDisabled(True)
+
 
     def open_file(self):
         # 打开文件选择对话框
@@ -104,13 +108,13 @@ class MainWindow(Ui_MainWindow,QMainWindow):
         # cluster = Cluster.Cluster(self.json_file_path)
         # self.stackedWidget.addWidget(cluster)
         # #self.setEnabled(True)
-        self.cluster = Cluster.Cluster(self.txt_file_path)
+        self.cluster = Cluster.Cluster(self.txt_file_path, self.save_path)
         self.stackedWidget.addWidget(self.cluster)
 
     def generate_wordcloud(self):
         # 弹出新窗口，生成词云
         #self.setEnabled(False)
-        self.wordcloud = WordCloud.ImageJsonGenerator()
+        self.wordcloud = WordCloud.ImageJsonGenerator(self.save_path)
         self.signal_main.connect(self.wordcloud.get_data)
         self.signal_main.emit(self.txt_file_path)
         #self.wordcloud = WordCloud.ImageJsonGenerator()

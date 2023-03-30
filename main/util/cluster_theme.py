@@ -45,12 +45,16 @@ def convert_to_excel_file(json_file_path):
 
 class ClusterTool:
     def __init__(self):
-        pass
+        self.json_file_path = None
+        self.xlsx_file_path = None
 
-
-    def convert_to_excel_file(self, json_file_path):
+    def convert_to_excel_file(self, json_file_path, save_path = None):
         self.json_file_path = json_file_path
-        self.xlsx_file_path = os.path.splitext(json_file_path)[0] + '.xlsx'
+        if save_path == None:
+            self.xlsx_file_path = os.path.splitext(json_file_path)[0] + '.xlsx'
+        else:
+            self.xlsx_file_path = save_path + os.path.splitext(os.path.basename(json_file_path))[0] + '.xlsx'
+            
         with open(self.json_file_path, 'r', encoding='utf-8') as f:
             self.data = json.load(f)
         workbook = openpyxl.Workbook()
@@ -96,7 +100,7 @@ class ClusterTool:
         result = dbscan.dbscan(corpus_path=data_path, eps=eps, min_samples=min_samples, fig=fig)
         return result
     
-    def excuteCluster(self, txt_path, method = 'dbscan', arg = 0.18, 
+    def excuteCluster(self, txt_path, save_path = None, method = 'dbscan', arg = 0.18, 
                       min_samples=2, fig=False):
         print(txt_path)
         result = []
@@ -121,9 +125,6 @@ class ClusterTool:
             topic_keywords = TopicKeywords(train_data=text, n_components=1,
                                     n_top_words=2, max_iter=15)
             s = '.'.join(text)
-            
-            # json_cluster["theme"] = self.textrank_summarization(s, ratio=0.2)
-            
             json_cluster["theme"] = ','.join(list(topic_keywords.analysis().values())[0])
             
             ppp = mytool.predict(s)
@@ -131,8 +132,6 @@ class ClusterTool:
             json_cluster["mood"] = dic[ppp]
             json_cluster["num"] = len(v)
             json_cluster["text"] = text
-            
-            
             json_data.append(json_cluster)
 
         # 输出为 JSON 文件
@@ -141,7 +140,7 @@ class ClusterTool:
             json.dump(json_data, f, ensure_ascii=False, indent=4)
             print(f'聚类成功，结果保存到 {json_file_path}')
         
-        excel_file_path = self.convert_to_excel_file(json_file_path)
+        excel_file_path = self.convert_to_excel_file(json_file_path, save_path)
         return json_file_path, excel_file_path
 
     

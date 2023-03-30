@@ -23,10 +23,11 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 from Cluster_ui import Ui_Dialog
 
 class Cluster(Ui_Dialog,QDialog):
-    def __init__(self, txt_file_path):
+    def __init__(self, txt_file_path, save_path = None):
         super().__init__()
         # self.json_file_path = json_file_path
         self.txt_file_path = txt_file_path
+        self.save_path = save_path
         self.setupUi(self)
 
         # 界面样式
@@ -45,16 +46,17 @@ class Cluster(Ui_Dialog,QDialog):
 
         #self.setEnabled(False)
         # 执行聚类保存到相应json
-        self.json_file_path, self.excel_file_path = clustertool.excuteCluster(self.txt_file_path,
+        self.json_file_path, self.excel_file_path = clustertool.excuteCluster(self.txt_file_path, self.save_path, 
                                                                               self.combo_cluster.currentText(),
                                                                               eval(self.param_lineedit.text()))
         # 显示提示信息
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Information)
-        msg_box.setText(f"聚类成功，数据保存为相应{self.json_file_path}和\n{self.excel_file_path}")
+        msg_box.setText(f"聚类成功，数据保存为\njson文件: {self.json_file_path}excel: \n{self.excel_file_path}\n请查看excel文件")
         msg_box.setWindowTitle("提示")
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.exec()
+        os.startfile(self.excel_file_path)
         # cluster = Cluster.Cluster(self.json_file_path)
         # self.stackedWidget.addWidget(cluster)
         self.clearData()

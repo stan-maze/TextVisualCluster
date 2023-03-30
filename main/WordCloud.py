@@ -35,25 +35,31 @@ class WorkerThread(QThread):
 class WorkerThread2(QThread):
     generate_finished = Signal(str)
 
-    def __init__(self, txt_path, image_path):
+    # Todo
+    # 把保存路径传入, 要求保存路径以/结尾, save_path
+    def __init__(self, txt_path, image_path, save_path = None):
         super().__init__()
         self.txt_path = txt_path
         self.image_path = image_path
+        self.save_path = save_path
 
     def run(self):
         txt_path = self.txt_path
         print(txt_path, self.image_path)
-        # cloud_image_path = CWC.create_wordscloud(txt_path, self.image_path)
-        cloud_image_path =generate(txt_path, self.image_path)
+        
+        # Todo
+        # cloud_image_path =generate(txt_path, self.image_path)
+        # 参数传入即可
+        cloud_image_path =generate(txt_path, self.image_path, self.save_path)
         print('路径: ', txt_path, self.image_path, cloud_image_path, sep='\n')
-        # bat_file_path = os.path.join(os.path.dirname(self.json_path), "generateWordCloud.bat")
-        # subprocess.run([bat_file_path])
         self.generate_finished.emit(cloud_image_path)
 class ImageJsonGenerator(Ui_Dialog,QDialog):
     signal_word=Signal(str)
+    
     def get_data(self,para):
         self.txt_path=para
-    def __init__(self):
+        
+    def __init__(self, save_path = None):
         super().__init__()
         self.WordCloudimage_path = os.path.join(PROJECT_DIR, f'wordcloud-master\love_test.png')
         self.setupUi(self)
@@ -71,6 +77,7 @@ class ImageJsonGenerator(Ui_Dialog,QDialog):
         self.json_path = None
         self.image_path = None
         self.is_generating = False
+        self.save_path = save_path
 
    # def chooseJson(self):
         # 使用Qt自带的文件选择框而不是操作系统的原生文件选择框
@@ -102,14 +109,15 @@ class ImageJsonGenerator(Ui_Dialog,QDialog):
         self.is_generating = True
         self.btn_generate.setText('生成中...')
         #self.worker_thread = WorkerThread(self.json_path, self.image_path)
-        self.worker_thread = WorkerThread2(txt_path, self.image_path)
+        self.worker_thread = WorkerThread2(txt_path, self.image_path, self.save_path)
         self.worker_thread.generate_finished.connect(self.generateFinished)
         self.worker_thread.start()
 
     def generateFinished(self, cloud_image_path):
         self.is_generating = False
         self.btn_generate.setText('生成')
-        QMessageBox.about(self, '提示', '生成完成！')
+        QMessageBox.about(self, '提示', f'生成完成\n图片位于{cloud_image_path}')
+        os.startfile(cloud_image_path)
         # 检查图片路径是否存在
         if os.path.exists(cloud_image_path):
             pixmap = QPixmap(cloud_image_path)

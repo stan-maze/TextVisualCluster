@@ -1,3 +1,6 @@
 venv/*
 /main/build*
 /main/dist/*
+!venv/
+!/main/build
+!/main/dist/

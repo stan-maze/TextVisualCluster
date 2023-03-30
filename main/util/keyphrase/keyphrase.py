@@ -108,7 +108,7 @@ class KeyPhraseExtraction():
         wc.to_file(save_path)  # 保存图片
 
 
-def generate(text_path, mask_pic):
+def generate(text_path, mask_pic, savepath = None):
     with open(text_path, encoding='utf-8') as f:
         text = f.read()
     
@@ -126,10 +126,12 @@ def generate(text_path, mask_pic):
     print(result)
     size = len(result)
     text = ''.join(result)
-    
     filepath, _ = os.path.splitext(text_path)
     pic_name, _ = os.path.splitext(os.path.basename(mask_pic))
-    output_filename = filepath + '_' + pic_name + '_cloud.png'
+    if savepath == None:
+        output_filename = filepath + '_' + pic_name + '_cloud.png'
+    else:
+        output_filename = savepath + os.path.splitext(os.path.basename(text_path))[0] + '_' + pic_name + '_cloud.png'
     
     key_phrase_extractor = KeyPhraseExtraction(topk=int(0.6 * size))
     # text输入之前除去停用词
