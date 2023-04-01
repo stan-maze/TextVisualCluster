@@ -23,7 +23,7 @@ from PySide6.QtGui import QPixmap, QBrush, QPen, QColor
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QLabel,
     QVBoxLayout, QHBoxLayout, QTableWidget,
-    QTableWidgetItem, QProgressBar, QDialog, QComboBox, QLineEdit, QPushButton
+    QTableWidgetItem, QProgressBar, QDialog, QComboBox, QLineEdit, QPushButton, QScrollArea
 )
 import matplotlib
 from matplotlib import pyplot as plt
@@ -35,8 +35,20 @@ class Ui_Dialog(object):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
 
+        Dialog.setMinimumSize(600, 618)
+        # 3 设置组件的滚动区域
+        self.scrollArea = QScrollArea(Dialog)
+        # self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.scrollArea.setMinimumSize(600, 618)
+        self.scrollArea.setWidgetResizable(True)
+        # 4 设置滚动区域的内容组件
+        self.scrollAreaWidgetContents = QWidget()
+        # 5 设置滚动区内容的布局方式
+        self.layout = QVBoxLayout(self.scrollAreaWidgetContents)
+        # 7 设置滚动区域显示内容
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
-        self.layout = QVBoxLayout(Dialog)
+        # self.layout = QVBoxLayout(Dialog)
 
         self.algorithm_label = QLabel("选择聚类算法")
         self.combo_cluster = QComboBox()

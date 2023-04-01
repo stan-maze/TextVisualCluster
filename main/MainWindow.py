@@ -95,6 +95,7 @@ class MainWindow(Ui_MainWindow,QMainWindow):
         # # 删除刷新
         for i in range(self.stackedWidget.count()):
             self.stackedWidget.removeWidget(self.stackedWidget.widget(i))
+
         # #self.setEnabled(False)
         # # 执行聚类保存到相应json
         # self.json_file_path, self.excel_file_path = clustertool.excuteCluster(self.txt_file_path)
@@ -110,6 +111,8 @@ class MainWindow(Ui_MainWindow,QMainWindow):
         # #self.setEnabled(True)
         self.cluster = Cluster.Cluster(self.txt_file_path, self.save_path)
         self.stackedWidget.addWidget(self.cluster)
+
+
 
     def generate_wordcloud(self):
         # 弹出新窗口，生成词云

@@ -5,7 +5,7 @@ from PySide6.QtGui import QPixmap, QBrush, QPen, QColor
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QLabel, 
     QVBoxLayout, QHBoxLayout, QTableWidget, 
-    QTableWidgetItem, QProgressBar, QDialog, QMessageBox
+    QTableWidgetItem, QProgressBar, QDialog, QMessageBox, QFileDialog
 )
 import matplotlib
 from matplotlib import pyplot as plt
@@ -43,7 +43,10 @@ class Cluster(Ui_Dialog,QDialog):
 
     def startCluster(self):
         # 删除刷新
-
+        # 选择保存文件夹
+        if not self.set_save_path():
+            return
+        print(self.save_path)
         #self.setEnabled(False)
         # 执行聚类保存到相应json
         self.json_file_path, self.excel_file_path = clustertool.excuteCluster(self.txt_file_path, self.save_path, 
@@ -62,6 +65,16 @@ class Cluster(Ui_Dialog,QDialog):
         self.clearData()
         self.showData()
         #self.setEnabled(True)
+
+    def set_save_path(self):
+        filepath = QFileDialog.getExistingDirectory(None, "选择保存文件夹", "./")
+        if len(filepath) == 0:
+            return False
+        else:
+            self.save_path = filepath + '/'
+            print(filepath)
+            return True
+
 
     def clearData(self):
         self.table.clearContents()
